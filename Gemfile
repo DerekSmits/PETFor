@@ -45,6 +45,7 @@ group :development do
   gem 'rubycop'
   gem 'fasterer'
   gem 'overcommit'
+  gem 'rspec-rails'
 end
 
 group :test do
