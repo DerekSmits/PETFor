@@ -3,6 +3,6 @@ class PostController < ApplicationController
         @posts = Post.all
     end
     def show
-        return "#{Post}"
+        return "#{Post.title}"
     end
 end
