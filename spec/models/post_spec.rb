@@ -1,7 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it 'write a title of the post' do
-  expect(Post.new()).to_not be_valid
-  end
+  pending "add some examples to (or delete) #{__FILE__}"
 end
