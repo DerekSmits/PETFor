@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    # title = post_params
 
     respond_to do |format|
       if @post.save
@@ -65,5 +66,6 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {})
+      params.require(:post).permit(:title, :body)
     end
 end
