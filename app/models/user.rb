@@ -6,6 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, presence: true
   has_many :posts, foreign_key: :author_id
-  has_many :comments
   has_many :roles
 end

@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class="title">
+    <%= @comment.title%>
+</div>
+<div class="text">
+    <%= @comment.body%>
+</div>
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>

@@ -4,8 +4,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Post, public: true
     user ||=User.new
+    can :read, Post, public: true
 
     if user.has_role? :user
       can :read, Post, user_id: user.id
