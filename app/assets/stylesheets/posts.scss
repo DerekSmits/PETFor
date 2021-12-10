@@ -1,3 +1,16 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$font: Sans-serif;
+$align: center;
+.title {
+    font: $font;
+    text-align: $align;
+    font-size: 20px;
+    font-weight: bold;
+}
+.text {
+    font: $font;
+    text-align: $align;
+    font-size: 16px;
+}

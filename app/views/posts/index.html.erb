@@ -12,9 +12,21 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.title%></td>
+        <td>
+        <% if can? :read, post %>
+          <%= link_to 'Show', post %></td>
+        <% end %>
+        <td>
+        <% if can? :edit, post %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+        <% end %>
+        </td>
+        <td>
+        <% if can? :destroy, post %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
