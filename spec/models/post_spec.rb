@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  if "return if Post valid"
+    expect(Post.create(title: "Title", body: "bubu")).to be_valid
+  end
 end
