@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = current_post.comments.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(comment_params.merge({ user_id: current_user.id, post_id: params[:post_id] }))
     @comment.save
-    end
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
@@ -34,7 +34,6 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-    end
   end
 
   private
