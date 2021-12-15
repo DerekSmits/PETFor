@@ -1,22 +1,17 @@
-<%= form_with(model: comment) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<%= simple_form_for([@post, @post.comments.build]) do |f| %>
+<!--
+collection.build(attributes = {}, …) Returns one or more new objects of the collection type that have been instantiated with attributes and linked to this object through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
+-->
+<div class="field">
+  <div class="control">
+    <%= f.input :name, input_html: { class: 'input' }, wrapper: false, label_html: { class: 'label' } %>
+  </div>
+</div>
 
-      <ul>
-        <% comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%# <div class="actions"> %>
-    <%# <%= form.submit %>
-  <%# </div> %>
-<% end %>
-
-<%= form_with model: @comment do |f| %>
-  <%= f.text_area :comment, size: "60x12" %>
-  <%= f.submit "Submit" %>
+<div class="field">
+  <div class="control">
+    <%= f.input :comment, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' }  %>
+  </div>
+</div>
+<%= f.button :submit, 'Leave a reply', class: "button is-primary" %>
 <% end %>
