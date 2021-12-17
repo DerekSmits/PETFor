@@ -5,4 +5,16 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy 
     has_many_attached :images
     resourcify
+    def self.search(search)
+        if search
+          post_res = Post.find_by(title: search)
+          if post_res
+            self.where(id: post_res)
+          else
+            @posts = Post.all
+          end
+        else
+          @posts = Post.all
+        end
+      end
 end
