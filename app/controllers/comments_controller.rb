@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   
     # GET /comments or /comments.json
     def index
-        @comments = @post.comments.limit(20)
+        @comments = @post.comments
     end
   
     # GET /comments/1 or /comments/1.json

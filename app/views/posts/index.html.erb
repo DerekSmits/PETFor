@@ -16,7 +16,9 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title%></td>
+        <td class="text-center h3"><%= post.title%></td>
+      </tr>
+      <tr>
         <div class="btn-group" role="group">
         <td>
           <% if can? :read, post %>
@@ -40,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<button class="btn"><%= link_to 'New Post', new_post_path %></button>
