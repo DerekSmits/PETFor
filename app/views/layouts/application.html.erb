@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "PETForum" %></title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
 
@@ -18,7 +19,7 @@
           <ul class="nav navbar-nav pull-right">
           <li><%= link_to 'Posts', '/posts/' %></li>
             <% if user_signed_in? %>
-            <li><%= link_to 'Log out', '/users/sign_out', :method => :delete %></li>
+            <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
             <li><%= link_to 'Edit', edit_user_registration_path %></li>
             <% else %>
               <li><%= link_to 'Log in', new_user_session_path %></li> 

@@ -29,12 +29,20 @@ class CommentsController < ApplicationController
           format.json{
             render :show, status: :created, location: @comment
           }
+        end
+      else
+        respond_to do |format|
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
+      end
       @comment.save
     end
   
     # PATCH/PUT /comments/1 or /comments/1.json
     def update
-      @post.comments.update(comment_params)
+      @post.comments.update(params[:comment].permit(:comment))
+      if @post.comments.update(params[:comment].permit(:comment))
+
     end
   
     # DELETE /comments/1 or /comments/1.json
