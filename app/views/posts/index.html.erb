@@ -13,20 +13,22 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title%></td>
+        <div class="btn-group" role="group">
         <td>
-        <% if can? :read, post %>
-          <%= link_to 'Show', post %></td>
-        <% end %>
+          <% if can? :read, post %>
+           <button><%= link_to 'Show', post %></td></button>
+          <% end %>
         <td>
-        <% if can? :edit, post %>
-          <%= link_to 'Edit', edit_post_path(post) %>
-        <% end %>
+          <% if can? :edit, post %>
+           <button><%= link_to 'Edit', edit_post_path(post) %></button>
+          <% end %>
         </td>
         <td>
-        <% if can? :destroy, post %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+          <% if can? :destroy, post %>
+           <button><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          <% end %>
         </td>
+        </div>
       </tr>
     <% end %>
   </tbody>
