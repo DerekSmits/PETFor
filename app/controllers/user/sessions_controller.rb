@@ -20,10 +20,10 @@ class User::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  DELETE /resource/sign_out
+  def destroy
+     super
+  end
 
   # protected
 
