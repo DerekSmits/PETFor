@@ -4,12 +4,14 @@ collection.build(attributes = {}, …) Returns one or more new objects of the co
 -->
 
 <div class="field">
+<% if can? :edit, @comment %>
   <div class="control h4">
     <%# <%= f.input :name, input_html: { class: 'input' }, wrapper: false, label_html: { class: 'label' } %> 
     <%= current_user.email%>
     <%# <%= f.input :comment, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' }  %>
     <%= f.input :comment%>
 <%= f.button :submit, 'Leave a reply', class: "button is-primary" %>
+<% end %>
 <% end %>
 </div>
 </div>
