@@ -11,9 +11,9 @@ class User::SessionsController < Devise::SessionsController
       return "Email: #{user.email}"
     end
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @user.add_role(:user)
+  end
 
   # POST /resource/sign_in
   # def create
