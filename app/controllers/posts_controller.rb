@@ -21,13 +21,12 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(post_params)
-    @post.save
+    @post = current_user.posts.create!(post_params)
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post.update(post_params)
+    @post.update!(post_params)
   end
 
   # DELETE /posts/1 or /posts/1.json

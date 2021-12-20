@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   
     # DELETE /comments/1 or /comments/1.json
     def destroy
-      @comment.destroy!
+      @comment.destroy
     end
   
     private
