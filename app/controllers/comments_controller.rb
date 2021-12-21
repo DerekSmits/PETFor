@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
         @comments_pagy = @post.comments.paginate(page: params[:page], per_page: 1)
     end
     # GET /comments/1 or /comments/1.json
-    # try
     def show
     end
   
