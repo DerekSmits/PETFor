@@ -21,9 +21,10 @@
       <% end %>
       </tr>
     <% end %>
+    
   </tbody>
 </table>
-
+<%= will_paginate @comments%>
 <br>
 
 <%= link_to 'New Comment', new_comment_path %>
