@@ -1,4 +1,4 @@
-class API::PostsController < ApplicationController
+class Api::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -8,20 +8,32 @@ class API::PostsController < ApplicationController
     else
       posts = Post.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     end
-    render json
+    render json: {status: 'Success', message: 'Loaded', data: posts}, status: :ok
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    posted = Post.find(params[:id])
+    if Post.find(params[:id])
+      render json: { status: 'Success', message: 'Loaded', data: posted}, status: :ok
+    else
+      render json: { status: 'Error', message: 'Not Found'},status: :not_found
+    end
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    respond_to do |format|
+      format.json
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    respond_to do |format|
+      format.json
+    end
   end
 
   # POST /posts or /posts.json
