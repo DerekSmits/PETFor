@@ -1,9 +1,9 @@
-class CommentsController < ApplicationController
+class API::CommentsController < ApplicationController
     before_action :set_comment, only: %i[ show edit update destroy ]
   
     # GET /comments or /comments.json
     def index
-        @comments = @post.comments
+        @comments = @post.comments..paginate(page: params[:page], per_page: 10)
     end
   
     # GET /comments/1 or /comments/1.json
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     # POST /comments or /comments.json
     def create
       @post = Post.find(params[:post_id])
-      @comment = @post.comments.create(params[:comment].permit(:comment))
+      @comment = @post.comments.create!(params[:comment].permit(:comment).merge(name: currnet_user.email))
       @comment.name = current_user.email
       if @comment.save
         respond_to do |format| 
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   
     # PATCH/PUT /comments/1 or /comments/1.json
     def update
-      @post.comments.update(params[:comment].permit(:comment))
+      @post.comments.update!(params[:comment].permit(:comment))
       if @post.comments.update(params[:comment].permit(:comment))
 
     end

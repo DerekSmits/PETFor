@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class API::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.create!(post_params)
     if @post.save
       respond_to do |format| 
         format.json{
@@ -33,12 +33,11 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-    @post.save
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post.update(post_params)
+    @post.update!(post_params)
     if @post.update(post_params)
       respond_to do |format| 
         format.json{
