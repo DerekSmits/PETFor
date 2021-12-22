@@ -3,7 +3,12 @@ class API::PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.search(params[:search])
+    if params[:query].present?
+      posts = Post.order(created_at: :desc).global_search(params[:query]).paginate(page: params[:page], per_page: 10)
+    else
+      posts = Post.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    end
+    render json
   end
 
   # GET /posts/1 or /posts/1.json

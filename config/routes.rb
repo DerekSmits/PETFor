@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "base#index"
   get 'post/post_id/comments', to: 'comments#index'
-
+  namespace 'api' do
+    resources :posts
+    resources :comments
+  end
 end

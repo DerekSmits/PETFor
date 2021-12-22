@@ -9,34 +9,48 @@ class PostsController < ApplicationController
       @posts = Post.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     end
     # @posts = Post.paginate(page: params[:page], per_page: 10)
+    respond_to do |format|
+      format.json
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    respond_to do |format|
+      format.json
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    respond_to do |format|
+      format.json
   end
 
   # GET /posts/1/edit
   def edit
+    respond_to do |format|
+      format.json
   end
 
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.create!(post_params)
+    respond_to do |format|
+      format.json
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     @post.update!(post_params)
+    respond_to do |format|
+      format.json
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
+    respond_to do |format|
+      format.json
   end
 
   private
