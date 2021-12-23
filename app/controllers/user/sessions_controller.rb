@@ -10,6 +10,7 @@ class User::SessionsController < Devise::SessionsController
     @users.each do |user|
       return "Email: #{user.email}"
     end
+    end
   # GET /resource/sign_in
   # def new
     # super
