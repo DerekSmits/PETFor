@@ -2,8 +2,8 @@
 
 class User::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  @users = user.all
   def index
+    @users = user.all
     return @users
   end
   def show
