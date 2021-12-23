@@ -30,4 +30,4 @@ production:
   user: rctjkfkhptitnz
   password: 21eb07c95fe0fd20ffe6b7cf67979ecc3d68268ffe06975e1d336bf199c83e41
   host: ec2-79-125-123-149.eu-west-1.compute.amazonaws.com
-
+  url: postgres://rctjkfkhptitnz:21eb07c95fe0fd20ffe6b7cf67979ecc3d68268ffe06975e1d336bf199c83e41@ec2-79-125-123-149.eu-west-1.compute.amazonaws.com:5432/d4rum1ci83r0jk
