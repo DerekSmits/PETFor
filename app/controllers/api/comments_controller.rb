@@ -42,7 +42,8 @@ class API::CommentsController < ApplicationController
     def update
       @post.comments.update!(params[:comment].permit(:comment))
       if @post.comments.update(params[:comment].permit(:comment))
-
+        super
+      end
     end
   
     # DELETE /comments/1 or /comments/1.json
