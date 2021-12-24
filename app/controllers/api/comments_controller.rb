@@ -3,7 +3,8 @@ class Api::CommentsController < ApplicationController
   
     # GET /comments or /comments.json
     def index
-        @comments = @post.comments..paginate(page: params[:page], per_page: 10)
+        comments = @post.comments..paginate(page: params[:page], per_page: 10)
+        render json: {status: 'Success', message: 'Loaded', data: comments}, status: :ok
     end
   
     # GET /comments/1 or /comments/1.json
@@ -12,7 +13,7 @@ class Api::CommentsController < ApplicationController
   
     # GET /comments/new
     def new
-      @comment = @post.comments.new
+      comment = @post.comments.new
     end
   
     # GET /comments/1/edit
@@ -23,16 +24,15 @@ class Api::CommentsController < ApplicationController
     def create
       @post = Post.find(params[:post_id])
       @comment = @post.comments.create!(params[:comment].permit(:comment).merge(name: currnet_user.email))
-      @comment.name = current_user.email
       if @comment.save
         respond_to do |format| 
           format.json{
-            render :show, status: :created, location: @comment
+            render :show, status: :created, location: @post.comment
           }
         end
       else
         respond_to do |format|
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+          format.json { render json: @post.comment.errors, status: :unprocessable_entity }
         end
       end
       @comment.save

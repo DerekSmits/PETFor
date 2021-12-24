@@ -13,9 +13,9 @@ class Api::PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    posted = Post.find(params[:id])
+    @post = Post.find(params[:id])
     if Post.find(params[:id])
-      render json: { status: 'Success', message: 'Loaded', data: posted}, status: :ok
+      render json: { status: 'Success', message: 'Loaded', data: @post}, status: :ok
     else
       render json: { status: 'Error', message: 'Not Found'},status: :not_found
     end
@@ -24,9 +24,6 @@ class Api::PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    respond_to do |format|
-      format.json
-    end
   end
 
   # GET /posts/1/edit
@@ -71,6 +68,7 @@ class Api::PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
+    render json: {status: 'Success', message: 'Deleted', data: @post}, status: :ok
   end
 
   private
