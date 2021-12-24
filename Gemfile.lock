@@ -124,6 +124,17 @@ GEM
     iniparse (1.5.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
+    jsonapi-deserializable (0.2.0)
+    jsonapi-parser (0.1.1)
+    jsonapi-rails (0.4.0)
+      jsonapi-parser (~> 0.1.0)
+      jsonapi-rb (~> 0.5.0)
+    jsonapi-rb (0.5.0)
+      jsonapi-deserializable (~> 0.2.0)
+      jsonapi-serializable (~> 0.3.0)
+    jsonapi-renderer (0.2.2)
+    jsonapi-serializable (0.3.1)
+      jsonapi-renderer (~> 0.2.0)
     jwt (2.3.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
@@ -334,6 +345,7 @@ DEPENDENCIES
   faker
   fasterer
   jbuilder (~> 2.7)
+  jsonapi-rails
   listen (~> 3.3)
   overcommit
   pg
