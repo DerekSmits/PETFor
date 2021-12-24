@@ -11,5 +11,15 @@ Rails.application.routes.draw do
   namespace 'api' do
     resources :posts
     resources :comments
+    # path: '',
+    # path_names: {
+      # sign_in: 'login',
+      # sign_out: 'logout',
+      # registration: 'signup'
+              #  },
+      # controllers: {
+        # sessions: 'sessions',
+        # registrations: 'registrations'
+              #  }
   end
 end

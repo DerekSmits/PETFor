@@ -93,7 +93,20 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-jwt (0.9.0)
+      devise (~> 4.0)
+      warden-jwt_auth (~> 0.6)
     diff-lcs (1.4.4)
+    dry-auto_inject (0.8.0)
+      dry-container (>= 0.3.4)
+    dry-configurable (0.13.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.6)
+    dry-container (0.9.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.13, >= 0.13.0)
+    dry-core (0.7.1)
+      concurrent-ruby (~> 1.0)
     erubi (1.10.0)
     execjs (2.8.1)
     factory_bot (6.2.0)
@@ -111,6 +124,7 @@ GEM
     iniparse (1.5.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
+    jwt (2.3.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (4.0.0)
@@ -151,6 +165,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
     rack-proxy (0.7.0)
@@ -272,6 +288,11 @@ GEM
     unicode-display_width (2.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    warden-jwt_auth (0.6.0)
+      dry-auto_inject (~> 0.8)
+      dry-configurable (~> 0.13)
+      jwt (~> 2.1)
+      warden (~> 1.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -308,6 +329,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   devise
+  devise-jwt
   factory_bot
   faker
   fasterer
@@ -317,6 +339,7 @@ DEPENDENCIES
   pg
   pg_search
   puma (~> 5.0)
+  rack-cors
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rolify
