@@ -13,7 +13,7 @@ class Api::CommentsController < ApplicationController
   
     # GET /comments/new
     def new
-      comment = @post.comments.new
+      @comment = @post.comments.new
     end
   
     # GET /comments/1/edit
@@ -48,7 +48,7 @@ class Api::CommentsController < ApplicationController
   
     # DELETE /comments/1 or /comments/1.json
     def destroy
-      @comment.destroy
+      @post.comment.destroy
     end
   
     private
