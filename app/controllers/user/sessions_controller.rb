@@ -2,27 +2,29 @@
 
 class User::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  @users = user.all
+  
   def index
+    @users = user.all
     return @users
   end
   def show
     @users.each do |user|
       return "Email: #{user.email}"
     end
+    end
   # GET /resource/sign_in
   # def new
-  #   super
+    # super
   # end
 
   # POST /resource/sign_in
   # def create
-  #   super
+    # super
   # end
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
+    #  super
   # end
 
   # protected

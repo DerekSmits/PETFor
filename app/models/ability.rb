@@ -5,14 +5,14 @@ class Ability
 
   def initialize(user)
     user ||=User.new
-    can :read, Post, public: true
+    can :read, Post
 
     if user.has_role? :user
-      can :read, Post, user_id: user.id
-      can :create, Post, user_id: user.id
-      can :edit, Post, user_id: user.id
+      can :read, Post, author_id: user.id
+      can :create, Post, author_id: user.id
+      can :edit, Post, author_id: user.id
       can :read, Comment
-      can :create, Comment, user_id: user.id
+      can :create, Comment, author_id: user.id
     end
     if user.has_role? :admin
       can :manage, :all

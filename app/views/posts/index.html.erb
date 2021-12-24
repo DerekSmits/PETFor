@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
+<%# <%= form_tag posts_path, :method => "get" do %>
+  <%# <%= label_tag(:search, "Post title") %>
+  <%# <%= text_field_tag :search, params[:search] %>
+  <%# <%= submit_tag("Search", :name => nil) %>
+<%# <% end %>
+<%= render "search" %>
 <table>
   <thead>
     <tr>
@@ -12,26 +17,31 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title%></td>
+        <td class="text-center h3"><%= post.title%></td>
+      </tr>
+      <tr>
+        <div class="btn-group" role="group">
         <td>
-        <% if can? :read, post %>
-          <%= link_to 'Show', post %></td>
-        <% end %>
+          <% if can? :read, post %>
+           <button><%= link_to 'Show', post %></td></button>
+          <% end %>
         <td>
-        <% if can? :edit, post %>
-          <%= link_to 'Edit', edit_post_path(post) %>
-        <% end %>
+          <% if can? :edit, post %>
+           <button><%= link_to 'Edit', edit_post_path(post) %></button>
+          <% end %>
         </td>
         <td>
-        <% if can? :destroy, post %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+          <% if can? :destroy, post %>
+           <button><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          <% end %>
         </td>
+        </div>
       </tr>
     <% end %>
+    <%= will_paginate @posts, :style => 'color:blue' %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<button class="btn"><%= link_to 'New Post', new_post_path %></button>

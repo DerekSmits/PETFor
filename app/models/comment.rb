@@ -1,4 +1,3 @@
 class Comment < ApplicationRecord
-    belongs_to :post
-    validates :comment, presence: true
+  belongs_to :post
 end
